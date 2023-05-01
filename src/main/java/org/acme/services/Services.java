@@ -5,8 +5,12 @@ import io.vertx.mutiny.core.Vertx;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.jboss.logging.Logger;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.event.Observes;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.event.Observes;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Random;
 
 @ApplicationScoped
@@ -30,7 +34,11 @@ public class Services {
     @ConfigProperty(name = "green.failure-ratio", defaultValue = "20")
     int greenFailureRatio;
 
-    public void init(@Observes StartupEvent ev, Vertx vertx, Logger logger) {
+    public void init(@Observes StartupEvent ev, Vertx vertx, Logger logger) throws IOException {
+//        var quarkus = Files.readAllBytes(new File("/Users/auri/Pictures/quarkus.jpg").toPath());
+//        var uno = Files.readAllBytes(new File("/Users/auri/Pictures/uno.jpg").toPath());
+//        var dos = Files.readAllBytes(new File("/Users/auri/Pictures/dos.jpg").toPath());
+//        var tres = Files.readAllBytes(new File("/Users/auri/Pictures/tres.jpg").toPath());
         Random random = new Random();
         vertx.createHttpServer()
                 .requestHandler(req -> {

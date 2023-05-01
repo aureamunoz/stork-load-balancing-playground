@@ -100,6 +100,7 @@
         row.insertCell(0).innerHTML = "" + run;
         const cell = row.insertCell(1);
         cell.innerHTML = "<table><tr><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td></tr></table>"
+        {!cell.innerHTML = "<table><tr><td><img src=\"data:image/png;base64, {{ picture.image }}\" width=\"300\" height=\"300\"/></td><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td></tr></table>"!}
 
 
         let array = [];
