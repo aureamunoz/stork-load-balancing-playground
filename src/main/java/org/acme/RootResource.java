@@ -16,7 +16,7 @@ public class RootResource {
     @Inject
     Template index;
 
-    @ConfigProperty(name = "stork.my-service.load-balancer", defaultValue = "round-robin")
+    @ConfigProperty(name = "quarkus.stork.music-service.load-balancer", defaultValue = "round-robin")
     String strategy;
 
     @GET

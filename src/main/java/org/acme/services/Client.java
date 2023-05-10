@@ -8,7 +8,7 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
 @Path("/")
-@RegisterRestClient(baseUri = "stork://my-service")
+@RegisterRestClient(baseUri = "stork://music-service")
 public interface Client {
     @GET
     @Produces(MediaType.TEXT_PLAIN)

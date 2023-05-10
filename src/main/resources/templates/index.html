@@ -30,9 +30,9 @@
                             There are three services:
                         </p>
                         <ul>
-                            <li>Blue Service (&nbsp;🔵&nbsp;)</li>
-                            <li>Yellow Service (&nbsp;🟡&nbsp;), slightly slower than the blue service</li>
-                            <li>Green Service (&nbsp;🟢&nbsp;), the fastest, but has 20% of chance to fail (&nbsp;❌&nbsp;)</li>
+                            <li>Jimmy Hendrix Service (<img src="/Users/auri/Pictures/2023-DevoxxUk/JimmyHendrix.jpg">)</li>
+                            <li>Eddie Van Halen Service (&nbsp;<img src="/Users/auri/Pictures/2023-DevoxxUk/EddieVanHalen.jpg">&nbsp;), slightly slower than the blue service</li>
+                            <li>Slash Service (<img src="/Users/auri/Pictures/2023-DevoxxUk/Slash.jpg">), the fastest, but has 20% of chance to fail (<img src="/Users/auri/Pictures/2023-DevoxxUk/quarkus.jpg">)</li>
                         </ul>
                         <p>You can either call the service 10 times sequentially or concurrently. When using the latter, requests are emitted without any specific order.</p>
                         <p>The current load balancing strategy is: <strong>{strategy}</strong></p>
@@ -100,14 +100,16 @@
         row.insertCell(0).innerHTML = "" + run;
         const cell = row.insertCell(1);
         cell.innerHTML = "<table><tr><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td></tr></table>"
-        {!cell.innerHTML = "<table><tr><td><img src=\"data:image/png;base64, {{ picture.image }}\" width=\"300\" height=\"300\"/></td><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td></tr></table>"!}
 
 
         let array = [];
         for (let i = 0; i < 10; i++) {
             array.push(fetch('/dispatcher?r=' + run)
                 .then(response => response.text())
-                .then(data => append(cell, i, data)));
+                .then(data => {
+                    var outputImg = '<img src="data:image/png;base64,'+data+'\"/>';
+                    append(cell, i, outputImg);
+                }));
         }
 
         await Promise.all(array);
@@ -128,7 +130,7 @@
         let array = [];
         for (let i = 0; i < 10; i++) {
             array.push(fetch('/dispatcher?c=' + i)
-                .then(response => response.text())
+                .then(response => btoa(response))
                 .then(data => append(cell, i, data)));
         }
 
