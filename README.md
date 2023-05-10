@@ -70,7 +70,9 @@ docker exec fox /bin/sh -c "echo '{\"service\": {\"name\": \"hendrix\", \"tags\"
 docker exec fox /bin/sh -c "echo '{\"service\": {\"name\": \"eddie\", \"tags\": [\"van-halen\"], \"port\": 9002}}' >> /consul/config/eddie.json"
 docker exec fox consul reload
 
-curl -X PUT -d '{"ID": "slash", "Name": "guitar-hero-service", "Address": "localhost", "Port": 9000}' http://127.0.0.1:8500/v1/agent/service/register
-curl -X PUT -d '{"ID": "hendrix", "Name": "guitar-hero-service", "Address": "localhost", "Port": 9001}' http://127.0.0.1:8500/v1/agent/service/register
-curl -X PUT -d '{"ID": "eddie", "Name": "guitar-hero-service", "Address": "localhost", "Port": 9002}' http://127.0.0.1:8500/v1/agent/service/register
+curl -X PUT -d '{"ID": "slash", "Name": "guitar-hero-service", "Address": "localhost", "Port": 9000, "Tags": ["guns-n-roses","slash"]}' http://127.0.0.1:8500/v1/agent/service/register
+curl -X PUT -d '{"ID": "hendrix", "Name": "guitar-hero-service", "Address": "localhost", "Port": 9001, "Tags": ["legend","Woodstock"] }' http://127.0.0.1:8500/v1/agent/service/register
+curl -X PUT -d '{"ID": "eddie", "Name": "guitar-hero-service", "Address": "localhost", "Port": 9002, "Tags": ["van-halen","Frankenstrat"]}' http://127.0.0.1:8500/v1/agent/service/register
 
+Para borrar
+curl -X PUT http://127.0.0.1:8500/v1/agent/service/deregister/slash

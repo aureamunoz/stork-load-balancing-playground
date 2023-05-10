@@ -10,6 +10,7 @@ import jakarta.enterprise.event.Observes;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.util.Base64;
 import java.util.Random;
@@ -35,16 +36,18 @@ public class Services {
     @ConfigProperty(name = "eddie.failure-ratio", defaultValue = "20")
     int eddieFailureRatio;
 
-    public void init(@Observes StartupEvent ev, Vertx vertx, Logger logger) throws IOException {
-        var jHendrix = Files.readAllBytes(new File("/Users/auri/Pictures/2023-DevoxxUk/JimmyHendrix.jpg").toPath());
-        var jEddie = Files.readAllBytes(new File("/Users/auri/Pictures/2023-DevoxxUk/EddieVanHalen.jpg").toPath());
-        var jSlash = Files.readAllBytes(new File("/Users/auri/Pictures/2023-DevoxxUk/Slash.jpg").toPath());
-        var jQuarkus = Files.readAllBytes(new File("/Users/auri/Pictures/2023-DevoxxUk/quarkus.jpg").toPath());
+    public void init(@Observes StartupEvent ev, Vertx vertx, Logger logger) throws IOException, URISyntaxException {
+
+        var jHendrix = Files.readAllBytes(new File(getClass().getResource("/JimmyHendrix.jpg").toURI()).toPath());
+//        var jHendrix = Files.readAllBytes(new File("/Users/auri/Pictures/2023-DevoxxUk/JimmyHendrix.jpg").toPath());
+        var jEddie = Files.readAllBytes(new File(getClass().getResource("/EddieVanHalen.jpg").toURI()).toPath());
+        var jSlash = Files.readAllBytes(new File(getClass().getResource("/Slash.jpg").toURI()).toPath());
+        var jQuarkus = Files.readAllBytes(new File(getClass().getResource("/quarkus.jpg").toURI()).toPath());
         Random random = new Random();
         vertx.createHttpServer()
                 .requestHandler(req -> {
                     vertx.setTimer(slashDelay, x -> {
-                        req.response().endAndForget(Base64.getEncoder().encodeToString(jEddie));
+                        req.response().endAndForget(Base64.getEncoder().encodeToString(jSlash));
                     });
                 })
                 .listenAndAwait(slashPort);
@@ -52,8 +55,7 @@ public class Services {
         vertx.createHttpServer()
                 .requestHandler(req -> {
                     vertx.setTimer(hendrixDelay, x -> {
-                        req.response().endAndForget(Base64.getEncoder().encodeToString(jSlash));
-//                        req.response().endAndForget("🟡");
+                        req.response().endAndForget(Base64.getEncoder().encodeToString(jHendrix));
                     });
                 })
                 .listenAndAwait(hendrixPort);
@@ -62,11 +64,9 @@ public class Services {
                 .requestHandler(req -> {
                     vertx.setTimer(5, x -> {
                         if (random.nextInt(100) > (100 - eddieFailureRatio)) {
-                            req.response().endAndForget(Base64.getEncoder().encodeToString(jHendrix));
-//                            req.response().endAndForget("❌");
+                            req.response().endAndForget(Base64.getEncoder().encodeToString(jEddie));
                         } else {
                             req.response().endAndForget(Base64.getEncoder().encodeToString(jQuarkus));
-//                            req.response().endAndForget("🟢");
                         }
                     });
                 })
@@ -74,9 +74,9 @@ public class Services {
 
         logger.infof("""
                 Services Started:
-                    - 🔵 Blue -> port: %d, delay: %dms
-                    - 🟡 Yellow -> port: %d, delay: %dms
-                    - 🟢 Green -> %d, failure ratio: %s
+                    - Slash -> port: %d, delay: %dms
+                    - Jimmy Hendrix -> port: %d, delay: %dms
+                    - Eddie Van Halen -> %d, failure ratio: %s
                 """, slashPort, slashDelay, hendrixPort, hendrixDelay, eddiePort, eddieFailureRatio + "%");
     }
 

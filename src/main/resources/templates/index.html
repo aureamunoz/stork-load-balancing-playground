@@ -14,7 +14,7 @@
         <section class="section hero">
             <div class="container">
                 <h1 class="title">
-                    Stork Load Balancing Demo
+                    Stork Guitar Hero Demo
                 </h1>
             </div>
         </section>
@@ -29,7 +29,6 @@
                             for each call. We will be switching the <em>load-balancing</em> strategy to see how they change the selection.
                             There are three services:
                         </p>
-                        {!<ul>!}
                             <table>
                                 <tbody>
                                 <tr>
@@ -46,10 +45,6 @@
                                 </tr>
                                 </tbody>
                             </table>
-                            {!<li>Slash instance <img src="Slash.jpg" width="70" height="70"></li>!}
-                            {!<li>Jimmy Hendrix instance, slightly slower than the Slash service <img src="JimmyHendrix.jpg" width="50" height="50"></li>!}
-                            {!<li>Eddie Van Halen Service <img src="EddieVanHalen.jpg" width="50" height="50">, the fastest, but has 20% of chance to fail (<img src="quarkus.jpg" width="50" height="50">)</li>!}
-                        {!</ul>!}
                         <p>You can either call the service 10 times sequentially or concurrently. When using the latter, requests are emitted without any specific order.</p>
                         <p>The current load balancing strategy is: <strong>{strategy}</strong></p>
                     </div>
@@ -143,14 +138,15 @@
         cell.innerHTML = "<table><tr><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td><td>⏳</td></tr></table>"
 
 
-        let array = [];
         for (let i = 0; i < 10; i++) {
-            array.push(fetch('/dispatcher?c=' + i)
-                .then(response => btoa(response))
-                .then(data => append(cell, i, data)));
+            await fetch('/dispatcher?r=' + run)
+                .then(response => response.text())
+                .then(data => {
+                    var outputImg = '<img src="data:image/png;base64,'+data+'\"/>';
+                    append(cell, i, outputImg);
+                });
         }
 
-        await Promise.all(array);
     }
 
     function clear() {
