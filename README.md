@@ -58,3 +58,19 @@ If you want to learn more about building native executables, please consult http
 Easily start your Reactive RESTful Web Services
 
 [Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
+
+
+Consul
+
+https://developer.hashicorp.com/consul/tutorials/day-0/docker-container-agents#docker-container-agents
+
+Register services:
+docker exec fox /bin/sh -c "echo '{\"service\": {\"name\": \"slash\", \"tags\": [\"guns-n-roses\"], \"port\": 9000}}' >> /consul/config/slash.json"
+docker exec fox /bin/sh -c "echo '{\"service\": {\"name\": \"hendrix\", \"tags\": [\"jimmy\"], \"port\": 9001}}' >> /consul/config/hendrix.json"
+docker exec fox /bin/sh -c "echo '{\"service\": {\"name\": \"eddie\", \"tags\": [\"van-halen\"], \"port\": 9002}}' >> /consul/config/eddie.json"
+docker exec fox consul reload
+
+curl -X PUT -d '{"ID": "slash", "Name": "guitar-hero-service", "Address": "localhost", "Port": 9000}' http://127.0.0.1:8500/v1/agent/service/register
+curl -X PUT -d '{"ID": "hendrix", "Name": "guitar-hero-service", "Address": "localhost", "Port": 9001}' http://127.0.0.1:8500/v1/agent/service/register
+curl -X PUT -d '{"ID": "eddie", "Name": "guitar-hero-service", "Address": "localhost", "Port": 9002}' http://127.0.0.1:8500/v1/agent/service/register
+

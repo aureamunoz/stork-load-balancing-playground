@@ -32,44 +32,40 @@
   <dependencies>
     <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-rest-client-reactive</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-resteasy-reactive</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
       <artifactId>quarkus-arc</artifactId>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-resteasy-reactive-qute</artifactId>
     </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-rest-client-reactive</artifactId>
+    </dependency>
 
     <!-- Stork -->
     <dependency>
       <groupId>io.smallrye.stork</groupId>
       <artifactId>stork-service-discovery-static-list</artifactId>
-<!--      <version>${stork.version}</version>-->
+    </dependency>
+    <dependency>
+      <groupId>io.smallrye.stork</groupId>
+      <artifactId>stork-service-discovery-consul</artifactId>
     </dependency>
 
     <dependency>
       <groupId>io.smallrye.stork</groupId>
       <artifactId>stork-load-balancer-random</artifactId>
-<!--      <version>${stork.version}</version>-->
     </dependency>
 
     <dependency>
       <groupId>io.smallrye.stork</groupId>
       <artifactId>stork-load-balancer-least-requests</artifactId>
-<!--      <version>${stork.version}</version>-->
     </dependency>
 
     <dependency>
       <groupId>io.smallrye.stork</groupId>
       <artifactId>stork-load-balancer-power-of-two-choices</artifactId>
-<!--      <version>${stork.version}</version>-->
     </dependency>
 
     <dependency>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Stork Load Balancing Demo</title>
+    <title>Stork Guitar Hero Demo</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 </head>
 
@@ -25,15 +25,31 @@
                 <div class="columns">
                     <div class="column is-two-thirds">
                         <p>
-                            This page allows you to invoke a dummy service 10 times and see which service instance has been used
+                            This page allows you to invoke a Guitar Hero service 10 times and see which service instance has been used
                             for each call. We will be switching the <em>load-balancing</em> strategy to see how they change the selection.
                             There are three services:
                         </p>
-                        <ul>
-                            <li>Jimmy Hendrix Service (<img src="/Users/auri/Pictures/2023-DevoxxUk/JimmyHendrix.jpg">)</li>
-                            <li>Eddie Van Halen Service (&nbsp;<img src="/Users/auri/Pictures/2023-DevoxxUk/EddieVanHalen.jpg">&nbsp;), slightly slower than the blue service</li>
-                            <li>Slash Service (<img src="/Users/auri/Pictures/2023-DevoxxUk/Slash.jpg">), the fastest, but has 20% of chance to fail (<img src="/Users/auri/Pictures/2023-DevoxxUk/quarkus.jpg">)</li>
-                        </ul>
+                        {!<ul>!}
+                            <table>
+                                <tbody>
+                                <tr>
+                                    <td style="vertical-align: middle">Slash instance </td>
+                                    <td><img src="Slash.jpg" width="70" height="70"></td>
+                                </tr>
+                                <tr>
+                                    <td style="vertical-align: middle">Jimmy Hendrix instance, slightly slower than the Slash service</td>
+                                    <td> <img src="JimmyHendrix.jpg" width="70" height="70"></td>
+                                </tr>
+                                <tr>
+                                    <td style="vertical-align: middle">Eddie Van Halen Service, the fastest, but has 20% of chance to fail</td>
+                                    <td><img src="EddieVanHalen.jpg" width="70" height="70"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            {!<li>Slash instance <img src="Slash.jpg" width="70" height="70"></li>!}
+                            {!<li>Jimmy Hendrix instance, slightly slower than the Slash service <img src="JimmyHendrix.jpg" width="50" height="50"></li>!}
+                            {!<li>Eddie Van Halen Service <img src="EddieVanHalen.jpg" width="50" height="50">, the fastest, but has 20% of chance to fail (<img src="quarkus.jpg" width="50" height="50">)</li>!}
+                        {!</ul>!}
                         <p>You can either call the service 10 times sequentially or concurrently. When using the latter, requests are emitted without any specific order.</p>
                         <p>The current load balancing strategy is: <strong>{strategy}</strong></p>
                     </div>
