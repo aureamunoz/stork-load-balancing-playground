@@ -1,4 +1,4 @@
-# stork-load-balancing Project
+# stork-guitar-hero Project
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
@@ -43,7 +43,7 @@ Or, if you don't have GraalVM installed, you can run the native executable build
 ./mvnw package -Pnative -Dquarkus.native.container-build=true
 ```
 
-You can then execute your native executable with: `./target/stork-load-balancing-1.0.0-SNAPSHOT-runner`
+You can then execute your native executable with: `./target/stork-guitar-hero-1.0.0-SNAPSHOT-runner`
 
 If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.
 
@@ -66,7 +66,7 @@ https://developer.hashicorp.com/consul/tutorials/day-0/docker-container-agents#d
 
 Register services:
 docker exec fox /bin/sh -c "echo '{\"service\": {\"name\": \"slash\", \"tags\": [\"guns-n-roses\"], \"port\": 9000}}' >> /consul/config/slash.json"
-docker exec fox /bin/sh -c "echo '{\"service\": {\"name\": \"hendrix\", \"tags\": [\"jimmy\"], \"port\": 9001}}' >> /consul/config/hendrix.json"
+docker exec fox /bin/sh -c "echo '{\"service\": {\"name\": \"hendrix\", \"tags\": [\"jimi\"], \"port\": 9001}}' >> /consul/config/hendrix.json"
 docker exec fox /bin/sh -c "echo '{\"service\": {\"name\": \"eddie\", \"tags\": [\"van-halen\"], \"port\": 9002}}' >> /consul/config/eddie.json"
 docker exec fox consul reload
 

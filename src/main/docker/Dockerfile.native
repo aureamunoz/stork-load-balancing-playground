@@ -7,11 +7,11 @@
 #
 # Then, build the image with:
 #
-# docker build -f src/main/docker/Dockerfile.native -t quarkus/stork-load-balancing .
+# docker build -f src/main/docker/Dockerfile.native -t quarkus/stork-guitar-hero .
 #
 # Then run the container using:
 #
-# docker run -i --rm -p 8080:8080 quarkus/stork-load-balancing
+# docker run -i --rm -p 8080:8080 quarkus/stork-guitar-hero
 #
 ###
 FROM registry.access.redhat.com/ubi8/ubi-minimal:8.5

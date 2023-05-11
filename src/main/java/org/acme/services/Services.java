@@ -38,10 +38,10 @@ public class Services {
 
     public void init(@Observes StartupEvent ev, Vertx vertx, Logger logger) throws IOException, URISyntaxException {
 
-        var jHendrix = Files.readAllBytes(new File(getClass().getResource("/JimmyHendrix.jpg").toURI()).toPath());
-        var jEddie = Files.readAllBytes(new File(getClass().getResource("/EddieVanHalen.jpg").toURI()).toPath());
-        var jSlash = Files.readAllBytes(new File(getClass().getResource("/Slash.jpg").toURI()).toPath());
-        var jQuarkus = Files.readAllBytes(new File(getClass().getResource("/quarkus.jpg").toURI()).toPath());
+        var jHendrix = Files.readAllBytes(new File(getClass().getResource("/META-INF/resources/JimiHendrix.jpg").toURI()).toPath());
+        var jEddie = Files.readAllBytes(new File(getClass().getResource("/META-INF/resources/EddieVanHalen.jpg").toURI()).toPath());
+        var jSlash = Files.readAllBytes(new File(getClass().getResource("/META-INF/resources/Slash.jpg").toURI()).toPath());
+        var jQuarkus = Files.readAllBytes(new File(getClass().getResource("/META-INF/resources/quarkus.jpg").toURI()).toPath());
         Random random = new Random();
         vertx.createHttpServer()
                 .requestHandler(req -> {
@@ -74,7 +74,7 @@ public class Services {
         logger.infof("""
                 Services Started:
                     - Slash -> port: %d, delay: %dms
-                    - Jimmy Hendrix -> port: %d, delay: %dms
+                    - Jimi Hendrix -> port: %d, delay: %dms
                     - Eddie Van Halen -> %d, failure ratio: %s
                 """, slashPort, slashDelay, hendrixPort, hendrixDelay, eddiePort, eddieFailureRatio + "%");
     }
