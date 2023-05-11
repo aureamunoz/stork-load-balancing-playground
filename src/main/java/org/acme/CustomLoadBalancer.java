@@ -19,7 +19,7 @@ public class CustomLoadBalancer implements LoadBalancer {
             throw new NoServiceInstanceFoundException("No services found.");
         }
         for (ServiceInstance serviceInstance :serviceInstances) {
-            if (serviceInstance.getLabels().containsKey("Woodstock")){
+            if (serviceInstance.getLabels().containsKey("guns-n-roses")){
                 return serviceInstance;
             }
 
