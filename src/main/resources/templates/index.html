@@ -33,20 +33,21 @@
                                 <tbody>
                                 <tr>
                                     <td style="vertical-align: middle">Slash instance </td>
-                                    <td><img src="Slash.jpg" width="70" height="70"></td>
+                                    <td><img src="Slash.jpg" width="100" height="100"></td>
                                 </tr>
                                 <tr>
                                     <td style="vertical-align: middle">Jimi Hendrix instance, slightly slower than the Slash service</td>
-                                    <td> <img src="JimiHendrix.jpg" width="70" height="70"></td>
+                                    <td> <img src="JimiHendrix.jpg" width="100" height="100"></td>
                                 </tr>
                                 <tr>
                                     <td style="vertical-align: middle">Eddie Van Halen Service, the fastest, but has 20% of chance to fail</td>
-                                    <td><img src="EddieVanHalen.jpg" width="70" height="70"></td>
+                                    <td><img src="EddieVanHalen.jpg" width="100" height="100"></td>
                                 </tr>
                                 </tbody>
                             </table>
                         <p>You can either call the service 10 times sequentially or concurrently. When using the latter, requests are emitted without any specific order.</p>
-                        <p>The current load balancing strategy is: <strong>{strategy}</strong></p>
+                        <p>The current service discovery strategy is: <strong>{strategies.sd}</strong></p>
+                        <p>The current load balancing strategy is: <strong>{strategies.lb}</strong></p>
                     </div>
                     <div class="column">
                         <div>

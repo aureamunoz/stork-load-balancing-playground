@@ -17,11 +17,33 @@ public class RootResource {
     Template index;
 
     @ConfigProperty(name = "quarkus.stork.guitar-hero-service.load-balancer.type", defaultValue = "round-robin")
-    String strategy;
+    String lbStrategy;
+    @ConfigProperty(name = "quarkus.stork.guitar-hero-service.service-discovery.type", defaultValue = "round-robin")
+    String sdStrategy;
 
     @GET
     @Produces(MediaType.TEXT_HTML)
     public TemplateInstance index() {
-        return index.data("strategy", strategy);
+
+        StorkConfig strategies = new StorkConfig(sdStrategy, lbStrategy);
+        return index.data("strategies",strategies);
+    }
+
+    public static class StorkConfig {
+        public String sd;
+        public String lb;
+
+        public StorkConfig(String sd, String ld) {
+            this.sd = sd;
+            this.lb = ld;
+        }
+
+        public String getSd() {
+            return sd;
+        }
+
+        public String getLb() {
+            return lb;
+        }
     }
 }
