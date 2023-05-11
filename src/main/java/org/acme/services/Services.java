@@ -39,7 +39,6 @@ public class Services {
     public void init(@Observes StartupEvent ev, Vertx vertx, Logger logger) throws IOException, URISyntaxException {
 
         var jHendrix = Files.readAllBytes(new File(getClass().getResource("/JimmyHendrix.jpg").toURI()).toPath());
-//        var jHendrix = Files.readAllBytes(new File("/Users/auri/Pictures/2023-DevoxxUk/JimmyHendrix.jpg").toPath());
         var jEddie = Files.readAllBytes(new File(getClass().getResource("/EddieVanHalen.jpg").toURI()).toPath());
         var jSlash = Files.readAllBytes(new File(getClass().getResource("/Slash.jpg").toURI()).toPath());
         var jQuarkus = Files.readAllBytes(new File(getClass().getResource("/quarkus.jpg").toURI()).toPath());
