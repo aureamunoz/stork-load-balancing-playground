@@ -21,7 +21,7 @@ public class Services {
     @ConfigProperty(name = "slash.http-port", defaultValue = "9000")
     int slashPort;
 
-    @ConfigProperty(name = "slash.delay-in-ms", defaultValue = "100")
+    @ConfigProperty(name = "slash.delay-in-ms", defaultValue = "300")
     int slashDelay;
 
     @ConfigProperty(name = "hendrix.http-port", defaultValue = "9001")
@@ -33,7 +33,7 @@ public class Services {
     @ConfigProperty(name = "eddie.http-port", defaultValue = "9002")
     int eddiePort;
 
-    @ConfigProperty(name = "eddie.failure-ratio", defaultValue = "20")
+    @ConfigProperty(name = "eddie.failure-ratio", defaultValue = "30")
     int eddieFailureRatio;
 
     public void init(@Observes StartupEvent ev, Vertx vertx, Logger logger) throws IOException, URISyntaxException {
