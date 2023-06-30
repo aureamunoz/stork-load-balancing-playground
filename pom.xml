@@ -13,10 +13,8 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
     <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
-    <quarkus.platform.version>3.0.1.Final</quarkus.platform.version>
+    <quarkus.platform.version>3.1.2.Final</quarkus.platform.version>
     <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
-
-<!--    <stork.version>1.0.1-SNAPSHOT</stork.version>-->
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -42,53 +40,43 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-rest-client-reactive</artifactId>
     </dependency>
-
-    <!-- Stork -->
     <dependency>
       <groupId>io.smallrye.stork</groupId>
       <artifactId>stork-service-discovery-static-list</artifactId>
     </dependency>
     <dependency>
       <groupId>io.smallrye.stork</groupId>
+      <artifactId>stork-service-discovery-kubernetes</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.smallrye.stork</groupId>
       <artifactId>stork-service-discovery-consul</artifactId>
     </dependency>
-
     <dependency>
       <groupId>io.smallrye.stork</groupId>
       <artifactId>stork-load-balancer-random</artifactId>
     </dependency>
-
     <dependency>
       <groupId>io.smallrye.stork</groupId>
       <artifactId>stork-load-balancer-least-requests</artifactId>
     </dependency>
-
     <dependency>
       <groupId>io.smallrye.stork</groupId>
       <artifactId>stork-load-balancer-power-of-two-choices</artifactId>
     </dependency>
-
     <dependency>
       <groupId>io.smallrye.stork</groupId>
       <artifactId>stork-load-balancer-least-response-time</artifactId>
-<!--      <version>${stork.version}</version>-->
     </dependency>
-
     <dependency>
       <groupId>io.smallrye.stork</groupId>
       <artifactId>stork-core</artifactId>
-<!--      <version>2.2.0</version>-->
     </dependency>
     <dependency>
       <groupId>io.smallrye.stork</groupId>
       <artifactId>stork-configuration-generator</artifactId>
       <scope>provided</scope>
-      <!-- provided scope is sufficient for the annotation processor -->
-<!--      <version>2.2.0</version>-->
     </dependency>
-
-
-
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-junit5</artifactId>
