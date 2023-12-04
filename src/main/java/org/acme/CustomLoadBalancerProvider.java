@@ -8,13 +8,10 @@ import jakarta.enterprise.context.ApplicationScoped;
 
 @LoadBalancerType("custom-load-balancer")
 @ApplicationScoped
-public class CustomLoadBalancerProvider implements
-        LoadBalancerProvider<CustomLoadBalancerConfiguration> {
+public class CustomLoadBalancerProvider implements LoadBalancerProvider<CustomLoadBalancerConfiguration> {
 
     @Override
-    public LoadBalancer createLoadBalancer(CustomLoadBalancerConfiguration config,
-                                           ServiceDiscovery serviceDiscovery) {
+    public LoadBalancer createLoadBalancer(CustomLoadBalancerConfiguration config, ServiceDiscovery serviceDiscovery) {
         return new CustomLoadBalancer(config);
     }
 }
-

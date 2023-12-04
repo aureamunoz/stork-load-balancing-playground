@@ -26,7 +26,7 @@ public class RootResource {
     public TemplateInstance index() {
 
         StorkConfig strategies = new StorkConfig(sdStrategy, lbStrategy);
-        return index.data("strategies",strategies);
+        return index.data("strategies", strategies);
     }
 
     public static class StorkConfig {

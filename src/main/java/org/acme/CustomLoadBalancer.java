@@ -9,7 +9,6 @@ import io.smallrye.stork.api.ServiceInstance;
 
 public class CustomLoadBalancer implements LoadBalancer {
 
-
     public CustomLoadBalancer(CustomLoadBalancerConfiguration config) {
     }
 
@@ -18,8 +17,8 @@ public class CustomLoadBalancer implements LoadBalancer {
         if (serviceInstances.isEmpty()) {
             throw new NoServiceInstanceFoundException("No services found.");
         }
-        for (ServiceInstance serviceInstance :serviceInstances) {
-            if (serviceInstance.getLabels().containsKey("guns-n-roses")){
+        for (ServiceInstance serviceInstance : serviceInstances) {
+            if (serviceInstance.getLabels().containsKey("guns-n-roses")) {
                 return serviceInstance;
             }
 
@@ -32,4 +31,3 @@ public class CustomLoadBalancer implements LoadBalancer {
         return false;
     }
 }
-
