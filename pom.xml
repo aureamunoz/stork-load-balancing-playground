@@ -8,6 +8,7 @@
   <properties>
     <compiler-plugin.version>3.11.0</compiler-plugin.version>
     <failsafe.useModulePath>false</failsafe.useModulePath>
+    <formatter-maven-plugin.version>2.23.0</formatter-maven-plugin.version>
     <maven.compiler.release>17</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -15,7 +16,6 @@
     <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
     <quarkus.platform.version>3.6.1</quarkus.platform.version>
     <surefire-plugin.version>3.2.2</surefire-plugin.version>
-    <formatter-maven-plugin.version>2.23.0</formatter-maven-plugin.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -73,6 +73,10 @@
       <groupId>io.smallrye.stork</groupId>
       <artifactId>stork-configuration-generator</artifactId>
       <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-micrometer-registry-prometheus</artifactId>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>

@@ -64,6 +64,21 @@ Consul
 
 https://developer.hashicorp.com/consul/tutorials/day-0/docker-container-agents#docker-container-agents
 
+Set up Consul in Docker
+docker pull hashicorp/consul
+docker images -f 'reference=hashicorp/consul'
+docker run -d -p 8500:8500 -p 8600:8600/udp --name=badger hashicorp/consul agent -server -ui -node=server-1 -bootstrap-expect=1 -client=0.0.0.0
+docker exec badger consul members
+docker run --name=fox hashicorp/consul agent -node=client-1 -retry-join=172.17.0.3
+docker exec fox /bin/sh -c "echo '{\"service\": {\"name\": \"slash\", \"tags\": [\"guns-n-roses\"], \"port\": 9000}}' >> /consul/config/slash.json"
+docker exec fox /bin/sh -c "echo '{\"service\": {\"name\": \"hendrix\", \"tags\": [\"jimi\"], \"port\": 9001}}' >> /consul/config/hendrix.json"
+docker exec fox /bin/sh -c "echo '{\"service\": {\"name\": \"eddie\", \"tags\": [\"van-halen\"], \"port\": 9002}}' >> /consul/config/eddie.json"\n
+docker exec fox consul reload
+curl -X PUT -d '{"ID": "slash", "Name": "guitar-hero-service", "Address": "localhost", "Port": 9000, "Tags": ["guns-n-roses","slash"]}' http://127.0.0.1:8500/v1/agent/service/register
+curl -X PUT -d '{"ID": "hendrix", "Name": "guitar-hero-service", "Address": "localhost", "Port": 9001, "Tags": ["legend","Woodstock"] }' http://127.0.0.1:8500/v1/agent/service/register
+curl -X PUT -d '{"ID": "eddie", "Name": "guitar-hero-service", "Address": "localhost", "Port": 9002, "Tags": ["van-halen","Frankenstrat"]}' http://127.0.0.1:8500/v1/agent/service/register\n
+
+
 Register services:
 docker exec fox /bin/sh -c "echo '{\"service\": {\"name\": \"slash\", \"tags\": [\"guns-n-roses\"], \"port\": 9000}}' >> /consul/config/slash.json"
 docker exec fox /bin/sh -c "echo '{\"service\": {\"name\": \"hendrix\", \"tags\": [\"jimi\"], \"port\": 9001}}' >> /consul/config/hendrix.json"
