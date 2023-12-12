@@ -33,7 +33,7 @@ public class Services {
     @ConfigProperty(name = "eddie.http-port", defaultValue = "9002")
     int eddiePort;
 
-    @ConfigProperty(name = "eddie.failure-ratio", defaultValue = "30")
+    @ConfigProperty(name = "eddie.failure-ratio", defaultValue = "20")
     int eddieFailureRatio;
 
     public void init(@Observes StartupEvent ev, Vertx vertx, Logger logger) throws IOException, URISyntaxException {
