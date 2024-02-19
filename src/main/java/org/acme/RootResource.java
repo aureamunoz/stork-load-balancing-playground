@@ -18,7 +18,7 @@ public class RootResource {
 
     @ConfigProperty(name = "quarkus.stork.guitar-hero-service.load-balancer.type", defaultValue = "round-robin")
     String lbStrategy;
-    @ConfigProperty(name = "quarkus.stork.guitar-hero-service.service-discovery.type", defaultValue = "round-robin")
+    @ConfigProperty(name = "quarkus.stork.guitar-hero-service.service-discovery.type", defaultValue = "consul")
     String sdStrategy;
 
     @GET
