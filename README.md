@@ -1,8 +1,30 @@
-# stork-guitar-hero Project
+# Spring Stork guitar hero
 
+This is a demo project for Quarkus developers wanting to use Smallrye Stork for service discovery and instance selection.
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+
+The following picture represents our system: it's a very simple application with an UI which is calling a dispatcher resource API. 
+
+![](https://github.com/aureamunoz/stork-guitar-hero-demo/blob/main/Stork%20guitar%20hero%20architecture.png)
+
+Dispatcher resource is calling a Guitar hero service running remotely. The dispatcher service use the Rest Client for that and Rest Client as shown in the picture is going to delegate to Stork the service discovery and instance selection.
+The Guitar hero service provides 3 instances: Slash, Jimi Hendrix and Eddie Van Halen.
+
+Slash instance returns the slash version of duke.
+The hendrix instance returns the Jimmy hendrix one and is slightly slower than the Slash service.
+Finally, the Eddie service is the fastest but with a 20% chance of failing.
+
+We will use Stork in the Rest client when the Dispatcher service need to invoke the remote service: Stork will locate this service. 
+This step retrieves 3 service instances, then we need to pick one, that's where the Stork load balancing capability comes into play for selecting one according to different strategies.
+
+Slash instance returns the slash version of duke.
+The hendrix instance returns the Jimmy hendrix one and is slightly slower than the Slash service.
+Finally, the Eddie service is the fatests but with a 20% chance of failing.
+
+We will use Stork when the Dispatcher service need to invoke the remote service: Stork will locate this service. This steps retrieves 3 service instances, then we need to pick one, thats where the Stork load balancing capability comes into play for selecting one according to different strategies.
+
 
 ## Running the application in dev mode
 
@@ -60,7 +82,7 @@ Easily start your Reactive RESTful Web Services
 [Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
 
 
-Consul
+## Consul help
 
 https://developer.hashicorp.com/consul/tutorials/day-0/docker-container-agents#docker-container-agents
 
